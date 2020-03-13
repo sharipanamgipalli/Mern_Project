@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+#container {
+  margin: 10%;
+  text-align: center;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: rebeccapurple;
+  padding: 4%;
+}
+.user {
+  color: white;
+}
+.align {
+  color: white;
+}
+.header p {
+  font-family: "Pacifico", cursive;
+  color: white;
+  font-size: x-large;
+}
+.container-img {
+  position: relative;
+  margin: 0 auto;
+}
+.container-img .content {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: #f1f1f1; /* Grey text */
+  width: 100%; /* Full width */
+}
+.container-img .content p {
+  font-family: "Pacifico", cursive;
+  text-align: center;
+}
+
+.landing-text {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.landing-text p {
+  font-family: "Source Sans Pro", sans-serif;
+}
+.landing-text img {
+  width: 15%;
+  height: auto;
+}
+
+.createItinerary {
+  margin-top: 15%;
+  text-align: center;
+}

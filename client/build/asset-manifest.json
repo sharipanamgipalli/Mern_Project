@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/client/static/css/main.d436760a.chunk.css",
+    "main.js": "/client/static/js/main.f81a7159.chunk.js",
+    "main.js.map": "/client/static/js/main.f81a7159.chunk.js.map",
+    "runtime-main.js": "/client/static/js/runtime-main.ed2c8eb8.js",
+    "runtime-main.js.map": "/client/static/js/runtime-main.ed2c8eb8.js.map",
+    "static/js/2.a911cfaa.chunk.js": "/client/static/js/2.a911cfaa.chunk.js",
+    "static/js/2.a911cfaa.chunk.js.map": "/client/static/js/2.a911cfaa.chunk.js.map",
+    "index.html": "/client/index.html",
+    "precache-manifest.5f8ddb4ee021fc86203b43f393356740.js": "/client/precache-manifest.5f8ddb4ee021fc86203b43f393356740.js",
+    "service-worker.js": "/client/service-worker.js",
+    "static/css/main.d436760a.chunk.css.map": "/client/static/css/main.d436760a.chunk.css.map",
+    "static/js/2.a911cfaa.chunk.js.LICENSE.txt": "/client/static/js/2.a911cfaa.chunk.js.LICENSE.txt",
+    "static/media/MYtineraryLogo.png": "/client/static/media/MYtineraryLogo.a227b9b3.png",
+    "static/media/circled-right-2.png": "/client/static/media/circled-right-2.16fd0ef3.png",
+    "static/media/travel-5.jpg": "/client/static/media/travel-5.b1faedf0.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ed2c8eb8.js",
+    "static/js/2.a911cfaa.chunk.js",
+    "static/css/main.d436760a.chunk.css",
+    "static/js/main.f81a7159.chunk.js"
+  ]
+}

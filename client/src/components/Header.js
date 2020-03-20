@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./MYtineraryLogo.png";
 import logo1 from "./travel-5.jpg";
 
 export default class Header extends Component {
@@ -7,9 +6,9 @@ export default class Header extends Component {
     return (
       <React-Fragment>
         <div className="header">
-          <i class="fa fa-user fa-2x user"></i>
+          <i className="fa fa-user fa-2x user"></i>
           <p>My Itinerary</p>
-          <i class="fa fa-align-justify fa-2x align"></i>
+          <i className="fa fa-align-justify fa-2x align"></i>
         </div>
 
         <div className="container-img">

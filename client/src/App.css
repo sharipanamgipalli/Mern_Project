@@ -59,3 +59,15 @@
   margin-top: 15%;
   text-align: center;
 }
+.city-container {
+  padding: 5%;
+}
+.city-img {
+  margin: 2%;
+}
+.city-img img {
+  width: 60%;
+  height: auto;
+}
+.home-icon {
+}

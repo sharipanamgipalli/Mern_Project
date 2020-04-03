@@ -5,13 +5,11 @@ import {
 } from "./actionTypes";
 import Itineraries from "../../components/Itineraries";
 
-export const fetchItineraries = () => {
+export const fetchItineraries = cityName => {
   return dispatch => {
     dispatch(fetchItineraryLoading());
-    fetch("http://localhost:5000/itineraries/city")
-      .then(res => {
-        res.json();
-      })
+    fetch("http://localhost:5000/itineraries/" + cityName)
+      .then(res => res.json())
       .then(result => {
         console.log("result", result);
         dispatch(fetchItinerarySuccess(result));

@@ -79,8 +79,10 @@ class Cities extends Component {
                       <div className="city-country">
                         <p>{city.country}</p>
                       </div>
-
-                      <Itineraries />
+                      <Link to={`/${city.name}/itineraries`}>
+                        View City Itinerary
+                      </Link>
+                      {/* <Itineraries /> */}
                     </div>
                   )}
                 </div>

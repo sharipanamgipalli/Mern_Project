@@ -9,20 +9,21 @@ class Itineraries extends Component {
   }
   componentDidMount() {
     //in the props we have access to both redux store and redux actions (only the ones remaped in mapStateToProps and mapDispatchToProps)
-    console.log(this.props);
-
-    this.props.fetchItineraries();
+    console.log("itinerary props", this.props);
+    const cityName = this.props.match.params.cityName;
+    this.props.fetchItineraries(cityName);
   }
   render() {
     return (
       <div className="city-itinerary">
-        <button
+        <p>itinerary page</p>
+        {/* <button
           type="button"
           className="btn btn-secondary"
           onClick={this.props.fetchItineraries}
         >
           View City Itinerary
-        </button>
+        </button> */}
       </div>
     );
   }
@@ -39,8 +40,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchItineraries: () => {
-      dispatch(fetchItineraries());
+    fetchItineraries: cityName => {
+      dispatch(fetchItineraries(cityName));
     }
   };
 };

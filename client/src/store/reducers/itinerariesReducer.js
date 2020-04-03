@@ -23,5 +23,7 @@ export default function itinerariesReducer(state = initialState, action) {
         isLoading: false,
         error: action.payload
       };
+    default:
+      return state;
   }
 }

@@ -15,6 +15,7 @@ router.get("/:city", (req, res) => {
   let cityRequested = req.params.city;
   itineraryModel.find({ city: cityRequested }).then(itineraries => {
     console.log("itineraries found!");
+    console.log("itineraries", itineraries);
     res.send(itineraries);
   });
   //   console.log(req.query);

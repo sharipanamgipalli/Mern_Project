@@ -1,9 +1,12 @@
 const initialState = {
   cities: [],
-  isFetching: false
+  isFetching: false,
+  error: null
+  // searchCities: []
 };
 
-function citiesReducer(state = initialState, action) {
+export default function citiesReducer(state = initialState, action) {
+  console.log("state", state);
   switch (action.type) {
     case "FETCH_CITY_LOADING":
       return {
@@ -11,18 +14,18 @@ function citiesReducer(state = initialState, action) {
         isFetching: true
       };
     case "FETCH_CITY_SUCCESS":
-      return [
+      return {
         ...state,
-        {
-          cities: action.payload.result,
-          isFetching: false
-        }
-      ];
+        cities: action.payload,
+        // searchCities: action.payload,
+        isFetching: false
+      };
+
     case "FETCH_CITY_ERROR":
       return {
         ...state,
         isFetching: false,
-        error: "Error occured"
+        error: action.payload
       };
     default:
       return state;

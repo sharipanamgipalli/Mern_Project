@@ -1,27 +1,43 @@
-import { FETCH_CITY_SUCCESS } from "./actionTypes";
+import {
+  FETCH_CITY_SUCCESS,
+  FETCH_CITY_ERROR,
+  FETCH_CITY_LOADING
+} from "./actionTypes";
 import Cities from "../../components/Cities";
 
 export const fetchCities = () => {
+  return dispatch => {
+    dispatch(fetchCitiesLoading());
+    fetch("http://localhost:5000/cities/all")
+      .then(res => {
+        return res.json();
+      })
+      .then(result => {
+        console.log("result", result);
+        dispatch(fetchCitiesSuccess(result));
+      })
+      .catch(error => {
+        console.log("Error occured", error);
+        dispatch(fetchCitiesError(error));
+      });
+  };
+};
+
+const fetchCitiesSuccess = result => {
   return {
     type: FETCH_CITY_SUCCESS,
-    payload: fetch("http://localhost:5000/cities/all")
+    payload: result
+  };
+};
+const fetchCitiesError = error => {
+  return {
+    type: FETCH_CITY_ERROR,
+    payload: error
+  };
+};
 
-    //   .then(res => {
-    //     return res.json();
-    //   })
-    //   .then(result => {
-    //     return {
-    //       type: FETCH_CITY_SUCCESS,
-    //       payload: Cities
-    //     };
-    //   })
-    //   .then(result => {
-    //     this.setState({ cities: result });
-    //     console.log(this.state.cities);
-    //     this.setState({ filteredCities: result });
-    //   })
-    //   .catch(error => {
-    //     console.log("Error occured", error);
-    //   })
+const fetchCitiesLoading = () => {
+  return {
+    type: FETCH_CITY_LOADING
   };
 };

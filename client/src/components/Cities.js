@@ -32,20 +32,20 @@ class Cities extends Component {
     }
     console.log("function called");
   };
+  //handleSearchFilter will just update the value of search in the component state
   handleSearchFilter = e => {
     this.setState({ search: e.target.value });
     console.log(e.target.value);
-    let filteredArr = [];
-    this.props.myCities.map(city => {
-      if (city.name.toLowerCase().includes(this.state.search.toLowerCase())) {
-        filteredArr.push(city);
-      }
-      this.setState({ filteredCities: filteredArr });
-    });
-    console.log(filteredArr);
   };
 
   render() {
+    //when the search value gets updated, render will fire again and it will filter the cities list
+    //the first time you load the page filteredCities will contain all the cities as search is an empty string
+    const { myCities } = this.props;
+    let filteredCities = myCities.filter(city => {
+      return city.name.toLowerCase().includes(this.state.search.toLowerCase());
+    });
+
     return (
       <div className="city-container">
         <div className="row d-flex">
@@ -62,7 +62,7 @@ class Cities extends Component {
             </form>
           </div>
           <div className="p-2 col-12">
-            {this.props.myCities.map((city, index) => {
+            {filteredCities.map((city, index) => {
               return (
                 <div className="city-img">
                   <img

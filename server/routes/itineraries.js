@@ -14,15 +14,10 @@ router.get("/all", (req, res) => {
 router.get("/:city", (req, res) => {
   let cityRequested = req.params.city;
   itineraryModel.find({ city: cityRequested }).then(itineraries => {
-    console.log("itineraries found!");
-    console.log("itineraries", itineraries);
+    // console.log("itineraries found!");
+    // console.log("itineraries", itineraries);
     res.send(itineraries);
   });
-  //   console.log(req.query);
-  //   itineraryModel.find({ name: cityRequested }).then(itinerary => {
-  //     res.send(itinerary);
-  //   });
-  //   res.send("/itineraries", cityRequested);
 });
 // router.post("/", (req, res) => {
 //   const newItinerary = new itineraryModel({

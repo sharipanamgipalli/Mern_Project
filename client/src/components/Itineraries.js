@@ -15,15 +15,27 @@ class Itineraries extends Component {
   }
   render() {
     return (
-      <div className="city-itinerary">
-        <p>itinerary page</p>
-        {/* <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={this.props.fetchItineraries}
-        >
-          View City Itinerary
-        </button> */}
+      <div className="itinerary-container">
+        <div className="row d-flex">
+          <div className="p-2 col-12">
+            {this.props.myItineraries.map(itinerary => {
+              return (
+                <div className="itinerary-img">
+                  <img src={itinerary.img} alt=" City itinerary image" />
+
+                  <div className="itinerary-details">
+                    <p>{itinerary.title}</p>
+                    <p>CITY:{itinerary.city}</p>
+                    <p>WHAT YOU DO:{itinerary.summary}</p>
+                    <p>DURATION:{itinerary.duration}</p>
+                    <p>PRICE:{itinerary.price}</p>
+                    <p>RATING:{itinerary.rating}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     );
   }

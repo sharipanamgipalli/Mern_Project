@@ -82,7 +82,6 @@ class Cities extends Component {
                       <Link to={`/${city.name}/itineraries`}>
                         View City Itinerary
                       </Link>
-                      {/* <Itineraries /> */}
                     </div>
                   )}
                 </div>

@@ -1,27 +1,17 @@
 import React, { Component } from "react";
 import logo1 from "./travel-5.jpg";
+import SideDrawerButton from "./SideDrawerButton";
 
-export default class Header extends Component {
-  render() {
-    return (
-      <React-Fragment>
-        <div className="header">
-          <i className="fa fa-user fa-2x user"></i>
-          <p>My Itinerary</p>
-          <i className="fa fa-align-justify fa-2x align"></i>
-        </div>
-
-        <div className="container-img">
-          <img
-            src={logo1}
-            alt={"Itinerary Logo"}
-            style={{ width: "100%", height: "auto" }}
-          />
-          <div className="content">
-            <p>To travel is to live!</p>
-          </div>
-        </div>
-      </React-Fragment>
-    );
-  }
-}
+const toolbar = props => (
+  <div className="navbar">
+    <nav className="navbar_navigation">
+      <div>
+        <SideDrawerButton click={props.drawerToggleHandler} />
+      </div>
+      <div className="navbar_logo">
+        <a href="/">MY ITINERARY APP</a>
+      </div>
+    </nav>
+  </div>
+);
+export default toolbar;

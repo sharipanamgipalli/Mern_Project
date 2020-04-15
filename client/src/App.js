@@ -5,6 +5,7 @@ import Landing from "./components/Landing";
 import Header from "./components/Header";
 import Cities from "./components/Cities";
 import Itineraries from "./components/Itineraries";
+import CreateAccount from "./components/CreateAccount";
 
 export default class App extends Component {
   render() {
@@ -15,6 +16,7 @@ export default class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route path="/cities" component={Cities} />
             <Route path="/:cityName/itineraries" component={Itineraries} />
+            <Route path="/register" component={CreateAccount} />
           </Switch>
         </div>
       </BrowserRouter>

@@ -2,7 +2,6 @@ const initialState = {
   cities: [],
   isFetching: false,
   error: null
-  // searchCities: []
 };
 
 export default function citiesReducer(state = initialState, action) {
@@ -17,7 +16,6 @@ export default function citiesReducer(state = initialState, action) {
       return {
         ...state,
         cities: action.payload,
-        // searchCities: action.payload,
         isFetching: false
       };
 

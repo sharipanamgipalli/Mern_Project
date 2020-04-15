@@ -4,26 +4,102 @@
   padding: 0;
 }
 #container {
-  margin: 10%;
   text-align: center;
+  background-image: url("./components/backgr-1.jpg");
+  overflow: hidden;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  position: fixed;
 }
-.header {
-  display: flex;
-  justify-content: space-between;
+.page-container {
+}
+.navbar {
+  /* display:flex */
+  position: sticky;
   background-color: rebeccapurple;
-  padding: 4%;
+  height: 70px;
+  top: 0;
+  left: 0;
 }
-.user {
+.navbar_logo {
+  margin-left: 4%;
+}
+.navbar_logo a {
+  font-family: "Pacifico", cursive;
+  color: white;
+  font-size: 1.2rem;
+}
+.navbar_navigation {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.toggle-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 34px;
+  width: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.toggle-button:focus {
+  outline: none;
+}
+.toggle-button__line {
+  width: 30px;
+  height: 3px;
+  background: white;
+}
+.side-drawer {
+  height: 70%;
+  /* background-color: rgb(4, 37, 41, 0.3); */
+  background-color: white;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  max-width: 400px;
+  z-index: 200;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease-out;
+}
+.side-drawer ul {
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.side-drawer a {
+  color: rebeccapurple;
+  text-decoration: none;
+  font-weight: bold;
+}
+.backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+.side-drawer.open {
+  transform: translateX(0);
+}
+/* .user {
   color: white;
 }
 .align {
   color: white;
 }
-.header p {
+.navbar p {
   font-family: "Pacifico", cursive;
   color: white;
   font-size: x-large;
-}
+}  */
 .container-img {
   position: relative;
   margin: 0 auto;
@@ -42,7 +118,7 @@
 }
 
 .landing-text {
-  margin-top: 10%;
+  margin-top: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,6 +127,7 @@
   font-family: "Source Sans Pro", sans-serif;
 }
 .landing-text img {
+  margin-top: 5%;
   width: 15%;
   height: auto;
 }
@@ -70,4 +147,21 @@
   height: auto;
 }
 .home-icon {
+}
+.itinerary-img img {
+  width: 80%;
+  height: auto;
+}
+.itinerary-details p {
+  text-align: center;
+}
+.account-container {
+  margin: 1%;
+  margin-top: 10%;
+  border-radius: 10px;
+  box-shadow: 0px 10px 50px #555;
+  background-color: white;
+}
+.fname {
+  margin-top: 20%;
 }

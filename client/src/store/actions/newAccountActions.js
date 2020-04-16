@@ -1,21 +1,21 @@
 import {
   POST_USER_DETAILS_LOADING,
   POST_USER_DETAILS_SUCCESS,
-  POST_USER_DETAILS_ERROR
+  POST_USER_DETAILS_ERROR,
 } from "./actionTypes";
 import axios from "axios";
 import CreateAccount from "../../components/CreateAccount";
 
-export const postUserDetails = () => {
-  return dispatch => {
+export const postUserDetails = (newUser) => {
+  return (dispatch) => {
     dispatch(postUserDetailsLoading());
     axios
-      .post("http://localhost:5000/newUserDetails", newUser)
-      .then(result => {
+      .post("http://localhost:5000/register/", newUser)
+      .then((result) => {
         console.log(result);
         dispatch(postUserDetailsSuccess(result));
       })
-      .then(error => {
+      .then((error) => {
         console.log(error);
         dispatch(postUserDetailsError(error));
       });
@@ -24,18 +24,18 @@ export const postUserDetails = () => {
 
 const postUserDetailsLoading = () => {
   return {
-    type: POST_USER_DETAILS_LOADING
+    type: POST_USER_DETAILS_LOADING,
   };
 };
-const postUserDetailsSuccess = result => {
+const postUserDetailsSuccess = (result) => {
   return {
     type: POST_USER_DETAILS_SUCCESS,
-    payload: result
+    payload: result,
   };
 };
-const postUserDetailsError = error => {
+const postUserDetailsError = (error) => {
   return {
     type: POST_USER_DETAILS_ERROR,
-    payload: error
+    payload: error,
   };
 };

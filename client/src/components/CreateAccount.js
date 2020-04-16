@@ -7,8 +7,7 @@ class CreateAccount extends Component {
   constructor(props) {
     super();
     this.state = {
-      firstName: null,
-      lastName: null,
+      userName: null,
       email: null,
       password: null,
       picture: null,
@@ -24,14 +23,17 @@ class CreateAccount extends Component {
     console.log(this.state);
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    console.log(this.props);
+    // const newUser = this.props.match.params.newUser;
+    // this.props.postUserDetails(newUser);
+  }
 
   render() {
-    const { firstName, lastName, email, password, picture } = this.state;
+    const { userName, email, password, picture } = this.state;
 
     const newUser = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
+      userName: this.state.userName,
       email: this.state.email,
       password: this.state.password,
     };
@@ -42,29 +44,14 @@ class CreateAccount extends Component {
           <div className="p-2 col-12">
             <h2>Create Account</h2>
             <div className="fname form-group">
-              <label for="firstName">First Name</label>
+              <label for="userName">Username</label>
               <input
                 type="text"
-                name="firstName"
-                id="firstName"
-                value={firstName}
+                name="userName"
+                id="userName"
+                value={userName}
                 className="form-control"
-                placeholder="Enter your first name"
-                onChange={this.handleUserDetails}
-                required
-              />
-            </div>
-          </div>
-          <div className="p-2 col-12">
-            <div className="lname form-group">
-              <label for="lastName">Last Name</label>
-              <input
-                type="text"
-                name="lastName"
-                id="lastName"
-                value={lastName}
-                className="form-control"
-                placeholder="Enter your last name"
+                placeholder="Enter your Username"
                 onChange={this.handleUserDetails}
                 required
               />
@@ -136,12 +123,12 @@ const mapStateToProps = (state) => {
     myError: state.myUserDetails.error,
   };
 };
-const mapDispatchToProps = (dispatch) => {
-  return {
-    postUserDetails: () => {
-      dispatch(postUserDetails());
-    },
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     postUserDetails: (newUser) => {
+//       dispatch(postUserDetails(newUser));
+//     },
+//   };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateAccount);
+export default connect(mapStateToProps)(CreateAccount);

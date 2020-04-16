@@ -25,7 +25,7 @@ mongoose
 
 app.use("/cities", require("./routes/cities"));
 app.use("/itineraries", require("./routes/itineraries"));
-app.use("/register", require(".routes/user"));
+app.use("/register", require("./routes/user"));
 
 app.listen(port, () => {
   console.log("Server is running on " + port + "port");

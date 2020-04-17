@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Cities from "./components/Cities";
 import Itineraries from "./components/Itineraries";
 import CreateAccount from "./components/CreateAccount";
+import LoginAccount from "./components/LoginAccount";
 
 export default class App extends Component {
   render() {
@@ -17,6 +18,7 @@ export default class App extends Component {
             <Route path="/cities" component={Cities} />
             <Route path="/:cityName/itineraries" component={Itineraries} />
             <Route path="/register" component={CreateAccount} />
+            <Route path="/login" component={LoginAccount} />
           </Switch>
         </div>
       </BrowserRouter>

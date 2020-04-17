@@ -21,22 +21,23 @@ class CreateAccount extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     console.log(this.state);
-  };
-
-  componentDidMount() {
-    console.log(this.props);
-    // const newUser = this.props.match.params.newUser;
-    // this.props.postUserDetails(newUser);
-  }
-
-  render() {
-    const { userName, email, password, picture } = this.state;
-
     const newUser = {
       userName: this.state.userName,
       email: this.state.email,
       password: this.state.password,
+      picture: this.state.picture,
     };
+    this.props.postUserDetails(newUser);
+  };
+
+  componentDidMount() {
+    console.log("user props", this.props);
+
+    // const newUser = this.props.match.params.newUser;
+  }
+
+  render() {
+    const { userName, email, password, picture } = this.state;
 
     return (
       <div className="account-container row d-flex">
@@ -123,12 +124,12 @@ const mapStateToProps = (state) => {
     myError: state.myUserDetails.error,
   };
 };
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     postUserDetails: (newUser) => {
-//       dispatch(postUserDetails(newUser));
-//     },
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    postUserDetails: (newUser) => {
+      dispatch(postUserDetails(newUser));
+    },
+  };
+};
 
-export default connect(mapStateToProps)(CreateAccount);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateAccount);

@@ -7,7 +7,7 @@ import SideDrawer from "./SideDrawer";
 import Backdrop from "./Backdrop";
 import image from "./travel-5.jpg";
 
-import Login from "./Login";
+import Login from "./LoginAccount";
 
 export default class Landing extends Component {
   constructor() {

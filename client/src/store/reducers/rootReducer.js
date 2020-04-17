@@ -6,7 +6,7 @@ import newAccountReducer from "./newAccountReducer";
 const rootReducer = combineReducers({
   myCities: citiesReducer,
   myItineraries: itinerariesReducer,
-  // myUserDetails: newAccountReducer,
+  myUserDetails: newAccountReducer,
 });
 
 export default rootReducer;

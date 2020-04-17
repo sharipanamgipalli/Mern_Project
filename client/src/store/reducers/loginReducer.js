@@ -1,29 +1,29 @@
 const initState = {
-  newUser: [],
-  isPosting: false,
+  loggedInUser: [],
+  isLogged: false,
   error: null,
   message: " ",
 };
 
-export default function newAccountReducer(state = initState, action) {
+export default function loginReducer(state = initState, action) {
   console.log("state", state);
   switch (action.type) {
-    case "POST_USER_DETAILS_LOADING":
+    case "POST_LOGIN_DETAILS_LOADING":
       return {
         ...state,
-        isPosting: true,
+        isLogged: true,
       };
-    case "POST_USER_DETAILS_SUCCESS":
+    case "POST_LOGIN_DETAILS_SUCCESS":
       return {
         ...state,
-        isPosting: false,
-        newUser: action.payload,
+        isLogged: false,
+        loggedInUser: action.payload,
         // message: action.payload.message,
       };
-    case "POST_USER_DETAILS_ERROR":
+    case "POST_LOGIN_DETAILS_ERROR":
       return {
         ...state,
-        isPosting: false,
+        isLogged: false,
         error: action.payload,
       };
     default:

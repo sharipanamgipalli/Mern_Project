@@ -10,7 +10,7 @@ export const postUserDetails = (newUser) => {
   return (dispatch) => {
     dispatch(postUserDetailsLoading());
     axios
-      .post("http://localhost:5000/register/", newUser)
+      .post("http://localhost:5000/register/newUser", newUser)
       .then((result) => {
         console.log(result);
         dispatch(postUserDetailsSuccess(result));

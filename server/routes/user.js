@@ -64,7 +64,66 @@ router.post(
         createdUser: newUser,
       });
     });
-    //Hashing the password
+  }
+);
+
+router.post(
+  "/user",
+  [
+    check(
+      "email",
+      "The email you entered is invalid, please try again."
+    ).isEmail(),
+    check(
+      "email",
+      "Email address must be between 4-100 characters long. Please try again"
+    ).isEmail(),
+    check(
+      "password",
+      "Password must be in between 8-100 characters long."
+    ).isLength(8, 100),
+    check(
+      "password",
+      "Password must include one lowercase character,one uppercase character, a number and a special character."
+    ).matches(
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,}$/,
+      "i"
+    ),
+  ],
+  (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      console.log(errors);
+      return res.status(422).json({ errors: errors.array() });
+    }
+    const user = newUser.find((user) => (user.email = req.body.email));
+    if (user == null) {
+      return res.status(400).send("Cannot find user");
+    }
+    if (bcrypt.compare(req.body.password, user.password)) {
+      res.send("Success passwords match!");
+      const payload = {
+        id: user._id,
+        email: user.email,
+        picture: user.picture,
+      };
+      const options = { expiresIn: 2592000 };
+      jwt.sign(payload, key.secretOrKey, options, (err, token) => {
+        if (err) {
+          res.json({
+            success: false,
+            token: "There was an error",
+          });
+        } else {
+          res.json({
+            success: true,
+            token: token,
+          });
+        }
+      });
+    } else {
+      res.send("Not Allowed");
+    }
   }
 );
 

@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const passport = require("passport");
+const passportSetup = require("./passport");
+const cookieSession = require("cookie-session");
+const key = require("./keys");
 
 const port = process.env.PORT || 5000;
 
@@ -25,9 +29,18 @@ mongoose
 
 app.use("/cities", require("./routes/cities"));
 app.use("/itineraries", require("./routes/itineraries"));
-app.use("/register", require("./routes/user"));
-app.use("/login", require("./routes/user"));
+app.use("/user", require("./routes/user"));
 
 app.listen(port, () => {
   console.log("Server is running on " + port + "port");
 });
+
+app.use(
+  cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [key.cookieKey],
+  })
+);
+app.use(passport.initialize());
+require("./passport");
+app.use(passport.session());

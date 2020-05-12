@@ -5,24 +5,27 @@ const cityModel = require("../model/cityModel");
 router.get("/all", (req, res) => {
   cityModel
     .find()
-    .then(files => {
+    .then((files) => {
       console.log("success");
       res.send(files);
     })
-    .catch(err => console.log(error));
+    .catch((err) => console.log(error));
 });
 router.post("/", (req, res) => {
   const newCity = new cityModel({
     name: req.body.name,
     country: req.body.country,
-    img: req.body.img
+    img: req.body.img,
   });
   newCity
     .save()
-    .then(city => {
-      res.send(city);
+    .then((newCity) => {
+      res.status(201).json({
+        message: "Added new City",
+        newCity: newCity,
+      });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send("Server error");
     });
 });

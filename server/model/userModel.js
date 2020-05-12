@@ -13,11 +13,21 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
+    // required: true,
   },
   picture: {
     type: String,
     required: true,
+  },
+  OAuth: {
+    type: Boolean,
+    required: true,
+  },
+  favourites: {
+    type: [String],
+  },
+  comments: {
+    type: [Object],
   },
 });
 

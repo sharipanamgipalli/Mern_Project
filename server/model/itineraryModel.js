@@ -2,27 +2,33 @@ const mongoose = require("mongoose");
 const itinerarySchema = new mongoose.Schema({
   city: {
     type: String,
-    required: true
+    required: true,
   },
   title: {
     type: String,
-    required: true
+    required: true,
   },
   img: {
-    type: String
+    type: String,
   },
   summary: {
-    type: String
+    type: String,
   },
   duration: {
-    type: String
+    type: String,
   },
   price: {
-    type: String
+    type: String,
   },
   rating: {
-    type: String
-  }
+    type: String,
+  },
+  favourites: {
+    type: [String],
+  },
+  comments: {
+    type: [Object],
+  },
 });
 
 module.exports = mongoose.model("itinerary", itinerarySchema);

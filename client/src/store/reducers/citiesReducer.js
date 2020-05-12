@@ -1,29 +1,29 @@
 const initialState = {
   cities: [],
   isFetching: false,
-  error: null
+  error: null,
 };
 
 export default function citiesReducer(state = initialState, action) {
-  console.log("state", state);
+  // console.log("state", state);
   switch (action.type) {
     case "FETCH_CITY_LOADING":
       return {
         ...state,
-        isFetching: true
+        isFetching: true,
       };
     case "FETCH_CITY_SUCCESS":
       return {
         ...state,
         cities: action.payload,
-        isFetching: false
+        isFetching: false,
       };
 
     case "FETCH_CITY_ERROR":
       return {
         ...state,
         isFetching: false,
-        error: action.payload
+        error: action.payload,
       };
     default:
       return state;

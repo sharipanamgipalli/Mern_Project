@@ -1,24 +1,28 @@
 const initState = {
   loggedInUser: [],
   isLogged: false,
+  isLoggedOut: false,
   error: null,
-  message: " ",
+  favourites: [],
+  token: "",
 };
 
 export default function loginReducer(state = initState, action) {
-  console.log("state", state);
   switch (action.type) {
     case "POST_LOGIN_DETAILS_LOADING":
       return {
         ...state,
-        isLogged: true,
+        isLogged: false,
       };
     case "POST_LOGIN_DETAILS_SUCCESS":
+      console.log(action);
       return {
         ...state,
-        isLogged: false,
-        loggedInUser: action.payload,
-        // message: action.payload.message,
+        isLogged: true,
+        isLoggedOut: false,
+        loggedInUser: action.payload.user,
+        token: action.payload.token,
+        favourites: action.payload.favourites,
       };
     case "POST_LOGIN_DETAILS_ERROR":
       return {
@@ -26,6 +30,15 @@ export default function loginReducer(state = initState, action) {
         isLogged: false,
         error: action.payload,
       };
+    case "LOG_OUT":
+      return {
+        ...state,
+        loggedInUser: "",
+        isLoggedOut: true,
+        isLogged: false,
+        token: null,
+      };
+
     default:
       return state;
   }

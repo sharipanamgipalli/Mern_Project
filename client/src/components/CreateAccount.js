@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import { useLayoutEffect } from "react";
 import { connect } from "react-redux";
 import { postUserDetails } from "../store/actions/newAccountActions";
+import {
+  Route,
+  Link,
+  BrowserRouter,
+  Redirect as Router,
+  Redirect,
+} from "react-router-dom";
 
 class CreateAccount extends Component {
   constructor(props) {
@@ -10,7 +17,7 @@ class CreateAccount extends Component {
       userName: null,
       email: null,
       password: null,
-      picture: null,
+      avatarPicture: null,
     };
   }
   handleUserDetails = (event) => {
@@ -25,7 +32,7 @@ class CreateAccount extends Component {
       userName: this.state.userName,
       email: this.state.email,
       password: this.state.password,
-      picture: this.state.picture,
+      avatarPicture: this.state.avatarPicture,
     };
     this.props.postUserDetails(newUser);
   };
@@ -38,11 +45,14 @@ class CreateAccount extends Component {
 
   render() {
     const { userName, email, password, picture } = this.state;
-
+    if (this.props.myUserDetails.isPosting) {
+      return <Redirect to="/login" />;
+    }
     return (
-      <div className="account-container row d-flex">
-        <form onSubmit={this.handleSubmit}>
+      <div className="account-container">
+        <form onSubmit={this.handleSubmit} className="form-container ">
           <div className="p-2 col-12">
+            <a href="/">return</a>
             <h2>Create Account</h2>
             <div className="fname form-group">
               <label for="userName">Username</label>
@@ -58,6 +68,7 @@ class CreateAccount extends Component {
               />
             </div>
           </div>
+
           <div className="p-2 col-12">
             <div className="email_Id form-group">
               <label for="email">Contact Email</label>
@@ -96,7 +107,7 @@ class CreateAccount extends Component {
             <div className="picture form-group">
               <label for="picture">Upload a picture</label>
               <input
-                type="file"
+                type="picture"
                 name="picture"
                 id="picture"
                 value={picture}
@@ -120,8 +131,8 @@ const mapStateToProps = (state) => {
   console.log(state);
   return {
     myUserDetails: state.myUserDetails.newUser,
-    myPosting: state.myUserDetails.isPosting,
-    myError: state.myUserDetails.error,
+    /*  myPosting: state.myUserDetails.isPosting,
+    myError: state.myUserDetails.error, */
   };
 };
 const mapDispatchToProps = (dispatch) => {

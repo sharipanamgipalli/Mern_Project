@@ -10,13 +10,13 @@ export const postUserDetails = (newUser) => {
   return (dispatch) => {
     dispatch(postUserDetailsLoading());
     axios
-      .post("http://localhost:5000/register/newUser", newUser)
+      .post("http://localhost:5000/user/register", newUser)
       .then((result) => {
         console.log(result);
         dispatch(postUserDetailsSuccess(result));
       })
       .then((error) => {
-        console.log(error);
+        console.log("error", error);
         dispatch(postUserDetailsError(error));
       });
   };
@@ -30,7 +30,7 @@ const postUserDetailsLoading = () => {
 const postUserDetailsSuccess = (result) => {
   return {
     type: POST_USER_DETAILS_SUCCESS,
-    payload: result,
+    payload: result.data,
   };
 };
 const postUserDetailsError = (error) => {
